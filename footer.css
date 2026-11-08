@@ -1,0 +1,257 @@
+/* Footer · one screen that closes every page (footer.js grows the garden).
+   Top: brand and the two calls on a hairline. Middle: the promise, four doors into the product and
+   the voice card. Bottom: the four pages that matter and the fine print. Both sides: a garden that
+   listens, in the reference footer's manner (hairline stems, split-gradient leaves, gold orbs) with
+   our own forms (speech-bubble blooms, voice pods, ringed orbs). Chrome stays neutral; colour lives
+   in the garden and the headline. */
+
+.fg { --t: clamp(68px, min(7vw, 10.6vh), 100px); position: relative; isolation: isolate; overflow: clip; height: 100vh; height: 100svh; min-height: 640px; color: var(--muted-foreground); font-size: var(--fs-md); }
+.fg::before { content: ""; position: absolute; z-index: 0; left: 50%; bottom: -34vh; width: min(1500px, 130vw); height: 78vh; transform: translateX(-50%); pointer-events: none; opacity: 0.75; background: radial-gradient(ellipse 50% 62% at 50% 100%, rgba(129, 48, 255, 0.42), rgba(129, 48, 255, 0) 70%), radial-gradient(ellipse 24% 34% at 50% 100%, rgba(254, 136, 27, 0.2), rgba(254, 136, 27, 0) 72%); transition: opacity 1.6s var(--ease), transform 1.6s var(--ease); }
+.fg.is-full::before { opacity: 1; transform: translateX(-50%) scale(1.12); }
+.fg::after { content: ""; position: absolute; z-index: 0; inset: 0 0 auto; height: 1px; pointer-events: none; background: linear-gradient(90deg, transparent, rgba(185, 151, 255, 0.18) 30% 70%, transparent); }
+
+/* layout */
+.fg-in { position: relative; z-index: 2; height: 100%; width: min(1240px, calc(100% - 48px)); margin: 0 auto; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; padding: clamp(86px, 12.5vh, 132px) 0 clamp(14px, 2.4vh, 26px); pointer-events: none; }
+.fg-head, .fg-mid, .fg-base { pointer-events: none; }
+.fg-top > *, .fg-mid > *, .fg-base > * { pointer-events: auto; }
+
+/* top: brand + calls on a hairline */
+.fg-head { display: grid; justify-items: center; gap: clamp(16px, 2.6vh, 28px); }
+.fg-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px clamp(28px, 6vw, 110px); }
+.fg-brand { display: inline-flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; font-size: clamp(19px, 1.75vw, 26px); font-weight: 500; letter-spacing: -0.02em; white-space: nowrap; }
+.fg-brand svg { width: clamp(32px, 2.7vw, 40px); height: clamp(32px, 2.7vw, 40px); flex: none; transition: transform 0.9s var(--ease); }
+.fg-brand:hover svg, .fg-brand:focus-visible svg { transform: rotate(180deg); }
+.fg-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.fg-rule { display: block; width: min(860px, 100%); height: 1px; background: linear-gradient(90deg, rgba(185, 151, 255, 0), rgba(185, 151, 255, 0.26) 22% 78%, rgba(185, 151, 255, 0)); }
+
+/* middle: the promise, the doors, the voice */
+.fg-mid { min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(10px, 2vh, 20px); text-align: center; }
+.fg-word { margin: 0; font-size: clamp(44px, min(5.6vw, 9.2vh), 104px); font-weight: 500; letter-spacing: -0.045em; line-height: 1.02; }
+.fg-sub { margin: 0; max-width: 46ch; color: var(--muted-foreground); font-size: clamp(15px, min(1.25vw, 2.1vh), 18.5px); line-height: 1.5; text-wrap: balance; }
+
+/* doors into the product, linked by the wire a voice travels along */
+.fg-doors { position: relative; display: flex; gap: clamp(16px, 1.8vw, 26px); margin-top: clamp(4px, 1.6vh, 16px); }
+.fg-wire { position: absolute; z-index: 0; left: calc(var(--t) / 2); right: calc(var(--t) / 2); top: calc(var(--t) / 2); height: 1px; pointer-events: none; background: linear-gradient(90deg, rgba(185, 151, 255, 0.1), rgba(185, 151, 255, 0.34) 50%, rgba(185, 151, 255, 0.1)); }
+.fg-wire i { position: absolute; inset: 0; animation: fgRun 5.2s cubic-bezier(.45, 0, .55, 1) infinite; animation-play-state: paused; }
+.fg-wire i::after { content: ""; position: absolute; left: -4px; top: -3.5px; width: 8px; height: 8px; border-radius: 50%; background: #ffd600; box-shadow: 0 0 12px 3px rgba(254, 136, 27, 0.65); }
+.fg.is-live .fg-wire i { animation-play-state: running; }
+.fg-doors.is-flow .fg-wire i { animation: fgRun 0.8s cubic-bezier(.33, 1, .68, 1) 1; animation-play-state: running; }
+@keyframes fgRun { from { transform: translateX(0); } to { transform: translateX(100%); } }
+
+.fg-door { --i: 0; position: relative; z-index: 1; display: grid; justify-items: center; gap: 10px; color: var(--muted-foreground); text-decoration: none; outline: none; }
+.fg-door::before { content: ""; position: absolute; z-index: -1; left: 50%; top: calc(var(--t) / 2); width: calc(var(--t) * 1.9); height: calc(var(--t) * 1.9); border-radius: 50%; transform: translate(-50%, -50%) scale(0.5); opacity: 0; pointer-events: none; background: radial-gradient(circle, rgba(172, 36, 255, 0.42), rgba(254, 136, 27, 0.12) 46%, rgba(172, 36, 255, 0) 70%); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.fg-tile { position: relative; display: grid; place-items: center; width: var(--t); height: var(--t); border-radius: calc(var(--t) * 0.28); background: var(--ec-card); box-shadow: inset 0 0 0 1px var(--border), 0 18px 40px -22px rgba(0, 0, 0, 0.9); transition: transform 0.55s var(--ease), box-shadow 0.55s var(--ease); }
+.fg-tile::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(140deg, #8130ff, #ca45ff 50%, #fe881b); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.45s var(--ease); }
+.fg-gl { width: 46%; height: 46%; overflow: visible; fill: none; stroke: url(#gIcon); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.fg-gl .g-dot { fill: #fe881b; stroke: none; }
+.fg-gl .g-b, .fg-gl .g-sw, .fg-gl .g-sp, .fg-gl .g-dot { transform-box: fill-box; }
+.fg-gl .g-b { transform-origin: 50% 100%; }
+.fg-gl .g-mid { transform-origin: 50% 50%; }
+.fg-gl .g-sw { transform-box: view-box; transform-origin: 12px 12px; }
+.fg-gl .g-sp { transform-origin: 50% 50%; }
+.fg-dl { display: grid; height: 1.35em; overflow: hidden; font-size: 13.5px; line-height: 1.35; white-space: nowrap; }
+.fg-dl b, .fg-dl i { font-style: normal; transition: transform 0.5s var(--ease), color 0.35s; }
+.fg-dl b { font-weight: 600; }
+.fg-dl i { font-weight: 500; color: #fff; }
+
+@media (hover: hover) and (pointer: fine) {
+  .fg-door:hover .fg-tile { transform: translateY(-5px); box-shadow: inset 0 0 0 1px transparent, 0 26px 50px -24px rgba(129, 48, 255, 0.8); }
+  .fg-door:hover .fg-tile::before, .fg-door:hover::before { opacity: 1; }
+  .fg-door:hover::before { transform: translate(-50%, -50%) scale(1); }
+  .fg-door:hover .fg-dl b, .fg-door:hover .fg-dl i { transform: translateY(-100%); }
+  .fg-door:hover .g-b { animation: fgBar 0.7s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -0.17s); }
+  .fg-door:hover .g-sw { animation: fgSweep 1.8s linear infinite; }
+  .fg-door:hover .g-sp { animation: fgSpark 1.2s var(--ease) infinite; }
+  .fg-door:hover .g-dot { animation: fgBlip 1.8s ease-in-out infinite; }
+}
+.fg-door:focus-visible .fg-tile { transform: translateY(-5px); box-shadow: 0 0 0 2px var(--ec-body), 0 0 0 4px #ca45ff; }
+.fg-door:focus-visible .fg-dl b, .fg-door:focus-visible .fg-dl i { transform: translateY(-100%); }
+.fg-door:active .fg-tile { transform: translateY(-2px) scale(0.97); transition-duration: 0.15s; }
+/* a heard voice runs through the doors: Field App → Command Center → Client Portal → Ask the Data */
+.fg-doors.is-flow .fg-tile { animation: fgLit 1.1s var(--ease) calc(var(--i) * 0.16s); }
+.fg-doors.is-flow .fg-tile::before { animation: fgRing 1.1s var(--ease) calc(var(--i) * 0.16s); }
+@keyframes fgLit { 30% { transform: translateY(-4px); box-shadow: inset 0 0 0 1px transparent, 0 0 38px -6px rgba(202, 69, 255, 0.75); } }
+@keyframes fgRing { 30% { opacity: 1; } }
+@keyframes fgBar { from { transform: scaleY(0.45); } to { transform: scaleY(1.15); } }
+@keyframes fgSweep { to { transform: rotate(360deg); } }
+@keyframes fgSpark { 50% { transform: scale(1.3) rotate(45deg); } }
+@keyframes fgBlip { 50% { opacity: 0.25; } }
+
+/* the voice card */
+.fg-voice { display: flex; align-items: center; gap: 14px; width: min(580px, 100%); margin-top: clamp(6px, 1.6vh, 16px); padding: 12px 12px 12px 18px; border-radius: 20px; background: rgba(17, 17, 20, 0.78); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: inset 0 0 0 1px var(--border), 0 30px 60px -30px rgba(129, 48, 255, 0.55); text-align: left; transition: box-shadow var(--dur-fast) var(--ease); }
+.fg-voice.is-on { box-shadow: inset 0 0 0 1px rgba(202, 69, 255, 0.45), 0 30px 70px -26px rgba(172, 36, 255, 0.75); }
+.fg-vwave { flex: none; display: flex; align-items: center; gap: 3px; height: 32px; }
+.fg-vwave i { width: 3.5px; height: 28%; border-radius: 2px; background: linear-gradient(#b997ff, #ca45ff 55%, #fe881b); transition: height 0.4s var(--ease); }
+.fg-voice.is-on .fg-vwave i { animation: fgTalk 0.9s ease-in-out infinite alternate; }
+.fg-vwave i:nth-child(2) { animation-delay: -0.3s; } .fg-vwave i:nth-child(3) { animation-delay: -0.6s; } .fg-vwave i:nth-child(4) { animation-delay: -0.15s; }
+.fg-vwave i:nth-child(5) { animation-delay: -0.45s; } .fg-vwave i:nth-child(6) { animation-delay: -0.75s; } .fg-vwave i:nth-child(7) { animation-delay: -0.2s; }
+@keyframes fgTalk { from { height: 20%; } to { height: 100%; } }
+.fg-vb { flex: 1; min-width: 0; display: grid; gap: 6px; }
+.fg-vq { margin: 0; color: #fff; font-size: 16px; font-weight: 500; line-height: 1.35; }
+.fg-vq.swap { animation: fgIn 0.5s var(--ease); }
+@keyframes fgIn { from { opacity: 0; transform: translateY(6px); filter: blur(3px); } }
+.fg-vm { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: var(--fs-xs); color: var(--muted-foreground); }
+.fg-vt { padding: 3px 10px; border-radius: var(--radius-pill); background: rgba(255, 255, 255, 0.08); color: #ece6ff; font-weight: 700; }
+.fg-vt[data-s="pos"] { background: rgba(254, 136, 27, 0.18); color: #ffb36b; }
+.fg-vt[data-s="neg"] { background: rgba(129, 48, 255, 0.26); color: #cdb4ff; }
+.fg-vt[data-s="all"] { background: linear-gradient(90deg, rgba(202, 69, 255, 0.3), rgba(254, 136, 27, 0.3)); color: #fff; }
+.fg-vwho { display: inline-flex; align-items: center; gap: 8px; }
+.fg-live { position: relative; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+.fg-live::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid var(--orange); opacity: 0; animation: fgPingDot 2.4s var(--ease) infinite; }
+@keyframes fgPingDot { 0% { transform: scale(0.4); opacity: 0.9; } 80%, 100% { transform: scale(1.6); opacity: 0; } }
+.fg-vp { flex: none; display: grid; justify-items: end; gap: 6px; font-size: var(--fs-xs); font-variant-numeric: tabular-nums; }
+.fg-vpips { display: flex; gap: 4px; }
+.fg-vpips i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255, 255, 255, 0.14); transition: background-color 0.5s var(--ease), box-shadow 0.5s var(--ease); }
+.fg-vpips i.on { background: #ffd600; box-shadow: 0 0 8px rgba(254, 136, 27, 0.7); }
+.fg-vn { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 14px; background: rgba(255, 255, 255, 0.07); color: #fff; cursor: pointer; transition: background-color var(--dur-instant), transform 0.2s var(--ease); }
+.fg-vn svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.6s var(--ease); }
+.fg-vn:hover, .fg-vn:focus-visible { background: var(--navy); }
+.fg-vn:hover svg { transform: rotate(180deg); }
+.fg-vn:active { transform: scale(0.94); }
+
+/* bottom: the pages that matter and the fine print */
+.fg-base { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px 28px; font-size: 14px; }
+.fg-pages { display: flex; flex-wrap: wrap; align-items: center; justify-self: start; }
+.fg-pages a { position: relative; display: inline-flex; align-items: center; padding: 8px 0; color: var(--muted-foreground); text-decoration: none; transition: color var(--dur-instant); }
+.fg-pages a + a::before { content: ""; width: 4px; height: 4px; margin: 0 13px; border-radius: 50%; background: #5e5672; }
+.fg-pages a::after { content: ""; position: absolute; right: 0; bottom: 4px; height: 1px; width: var(--w, 100%); background: var(--grad-text); transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--ease); }
+.fg-pages a + a::after { width: calc(100% - 30px); }
+.fg-pages a:hover, .fg-pages a:focus-visible, .fg-pages a[aria-current="page"] { color: #fff; }
+.fg-pages a:hover::after, .fg-pages a:focus-visible::after, .fg-pages a[aria-current="page"]::after { transform: scaleX(1); }
+.fg-made { margin: 0; color: var(--muted-foreground); text-align: center; }
+.fg-fine { position: relative; display: flex; align-items: center; justify-self: end; gap: 18px; }
+.fg-cred summary { cursor: pointer; color: var(--muted-foreground); list-style: none; transition: color var(--dur-instant); }
+.fg-cred summary::-webkit-details-marker { display: none; }
+.fg-cred summary::after { content: " +"; }
+.fg-cred[open] summary::after { content: " –"; }
+.fg-cred summary:hover, .fg-cred[open] summary { color: #fff; }
+.fg-pop { position: absolute; z-index: 5; right: 0; bottom: calc(100% + 14px); width: min(640px, calc(100vw - 32px)); max-height: 56vh; overflow: auto; padding: 18px 20px; border-radius: var(--radius-sm); background: #111114; box-shadow: inset 0 0 0 1px var(--border), 0 30px 60px -20px rgba(0, 0, 0, 0.85); color: var(--muted-foreground); font-size: 13px; line-height: 1.6; animation: fgIn 0.4s var(--ease); }
+.fg-pop p { margin: 0 0 10px; }
+.fg-pop p:last-child { margin-bottom: 0; }
+.fg-pop a { color: #e9e0ff; }
+.fg-up { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 16px; border-radius: 12px; color: #fff; text-decoration: none; background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1px var(--border); transition: background-color var(--dur-instant), box-shadow var(--dur-instant); }
+.fg-up svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transform: rotate(-90deg); transition: transform 0.4s var(--ease); }
+.fg-up:hover, .fg-up:focus-visible { background: rgba(255, 255, 255, 0.1); box-shadow: inset 0 0 0 1px rgba(202, 69, 255, 0.5); }
+.fg-up:hover svg { transform: rotate(-90deg) translateX(3px); }
+
+/* the garden */
+.fg-garden { position: absolute; inset: 0; z-index: 1; pointer-events: none; -webkit-mask-image: linear-gradient(to top, transparent 2%, rgba(0, 0, 0, 0.3) 9%, #000 24%); mask-image: linear-gradient(to top, transparent 2%, rgba(0, 0, 0, 0.3) 9%, #000 24%); }
+.fg-side { position: absolute; bottom: 0; height: 100%; width: auto; max-width: 35vw; overflow: visible; }
+.fg-l { left: 0; }
+.fg-r { right: 0; transform: scaleX(-1); }
+.fg-garden .pl, .fg-garden .sp { animation: fgSway 8s ease-in-out infinite alternate; animation-play-state: paused; }
+.fg-garden .du { animation: fgFloat 7s ease-in-out infinite; animation-play-state: paused; }
+.fg.is-live .fg-garden .pl, .fg.is-live .fg-garden .sp, .fg.is-live .fg-garden .du { animation-play-state: running; }
+.fg.is-live .fg-garden .pl.is-held { animation-play-state: paused; }
+@keyframes fgSway { from { transform: rotate(-1.3deg); } to { transform: rotate(1.3deg); } }
+@keyframes fgFloat { 50% { transform: translateY(-12px); opacity: 0.45; } }
+
+/* grown once on arrival: stems and hairlines draw up, leaves unfurl from the stem, heads pop */
+.fg-garden .st, .fg-garden .hr { stroke-dasharray: 100 100; stroke-dashoffset: 100; transition: stroke-dashoffset 1.1s cubic-bezier(.33, 1, .68, 1) calc(var(--d, 0s) * .5); }
+.fg-garden .lf, .fg-garden .hp, .fg-garden .nd { transform: scale(0); transition: transform 0.85s var(--ease) calc(var(--d, 0s) * .5); }
+.fg-garden .nd { transform-box: fill-box; transform-origin: center; }
+.fg-garden .hp { transition: transform 0.7s cubic-bezier(.34, 1.56, .64, 1) calc(var(--d, 0s) * .5); }
+.fg-garden.is-grown .st, .fg-garden.is-grown .hr { stroke-dashoffset: 0; }
+.fg-garden.is-grown .lf, .fg-garden.is-grown .hp, .fg-garden.is-grown .nd { transform: none; }
+.fg-garden .sg { stroke-dasharray: 10 130; stroke-dashoffset: 10; opacity: 0; }
+
+/* heads: grab, hover, hold */
+.fg-garden .hd { pointer-events: auto; cursor: grab; touch-action: none; }
+.fg-garden .hd:active { cursor: grabbing; }
+.fg-garden .hit { fill: transparent; }
+.fg-garden .hi { transition: transform 0.45s var(--ease), filter 0.45s var(--ease); }
+.fg-garden .hd:hover .hi { transform: scale(1.07); filter: drop-shadow(0 0 14px rgba(202, 69, 255, 0.5)); }
+.fg-garden .pl.is-held .hi { transform: scale(1.12); filter: drop-shadow(0 0 22px rgba(254, 136, 27, 0.55)); }
+
+/* waiting: typing dots */
+.fg-garden .dots circle { transform-box: fill-box; transform-origin: center; animation: fgType 1.5s ease-in-out infinite; animation-delay: calc(var(--i) * 0.18s); animation-play-state: paused; }
+.fg.is-live .fg-garden .dots circle { animation-play-state: running; }
+@keyframes fgType { 0%, 60%, 100% { transform: none; opacity: 0.6; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+/* evolved bloom: the bud gives way to five speech-bubble petals round a gold heart */
+.fg-garden .bud { transform-origin: 0 -40px; transition: transform 0.55s var(--ease), opacity 0.4s var(--ease); }
+.fg-garden .is-evolved .bud { transform: scale(0.3); opacity: 0; }
+.fg-garden .nk { opacity: 0; transition: opacity 0.3s; }
+.fg-garden .is-evolved .nk { opacity: 1; }
+.fg-garden .pt { transform: scale(0) rotate(-40deg); transition: transform 1s cubic-bezier(.34, 1.56, .64, 1) calc(0.1s + var(--i) * 0.07s); }
+.fg-garden .is-evolved .pt { transform: none; }
+.fg-garden .core, .fg-garden .bl .wv { transform: scale(0); transition: transform 0.7s cubic-bezier(.34, 1.56, .64, 1) 0.32s; }
+.fg-garden .is-evolved .core, .fg-garden .is-evolved .bl .wv { transform: none; }
+
+/* evolved pod: typing turns into a voice */
+.fg-garden .pl-pod .dots { transform-box: fill-box; transform-origin: center; transition: opacity 0.3s, transform 0.4s var(--ease); }
+.fg-garden .pl-pod.is-evolved .dots { opacity: 0; transform: scale(0.4); }
+.fg-garden .pl-pod .wv rect { transform: scaleY(0); transition: transform 0.6s cubic-bezier(.34, 1.56, .64, 1) calc(0.12s + var(--i) * 0.045s); }
+.fg-garden .wv rect { transform-box: fill-box; transform-origin: center; }
+.fg-garden .pl-pod.is-evolved .wv rect { transform: none; }
+.fg-garden .is-speaking .wv rect { animation: fgVoice 0.75s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -0.13s); }
+@keyframes fgVoice { from { transform: scaleY(0.3); } to { transform: scaleY(1); } }
+
+/* evolved orb: it gains the platform's ring; it keeps listening with a slow ping */
+.fg-garden .orbit { stroke-dasharray: 100 100; stroke-dashoffset: 100; transition: stroke-dashoffset 1.3s var(--ease) 0.1s; }
+.fg-garden .is-evolved .orbit { stroke-dashoffset: 0; }
+.fg-garden .ping { opacity: 0; transform-origin: 0 -20px; animation: fgPing 4.6s var(--ease) infinite; animation-play-state: paused; }
+.fg.is-live .fg-garden .ping { animation-play-state: running; }
+.fg-garden .is-speaking .ping { animation: fgPing 0.9s var(--ease) 3; animation-play-state: running; }
+@keyframes fgPing { 0% { transform: scale(1); opacity: 0.75; } 45%, 100% { transform: scale(2); opacity: 0; } }
+
+/* below laptop width the garden becomes a band between the words and the links; footer.js shortens
+   the stems for it. The inner wrapper dissolves so the garden can take its own row. */
+@media (max-width: 1100px), (max-aspect-ratio: 5/4) {
+  .fg { height: auto; min-height: 100vh; min-height: 100svh; display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto; padding: clamp(80px, 10svh, 112px) 0 clamp(14px, 2.4svh, 24px); }
+  .fg-in { display: contents; }
+  .fg-head, .fg-mid, .fg-base { position: relative; z-index: 2; width: min(1240px, calc(100% - 40px)); justify-self: center; }
+  .fg-head { grid-row: 1; }
+  .fg-mid { grid-row: 2; padding-top: clamp(16px, 3.4svh, 40px); }
+  .fg-garden { grid-row: 3; position: relative; inset: auto; height: clamp(190px, 31svh, 340px); -webkit-mask-image: linear-gradient(to top, transparent 0, rgba(0, 0, 0, 0.4) 8%, #000 24%); mask-image: linear-gradient(to top, transparent 0, rgba(0, 0, 0, 0.4) 8%, #000 24%); }
+  .fg-side { height: 100%; max-width: 50%; }
+  .fg-base { grid-row: 4; grid-template-columns: 1fr; justify-items: center; gap: 2px 20px; text-align: center; }
+  .fg-pages, .fg-fine { justify-self: center; }
+  .fg-pop { right: auto; left: 50%; translate: -50% 0; text-align: left; }
+}
+@media ((max-width: 1100px) or (max-aspect-ratio: 5/4)) and (min-width: 820px) {
+  .fg-base { grid-template-columns: 1fr auto 1fr; justify-items: stretch; text-align: left; }
+  .fg-pages { justify-self: start; }
+  .fg-fine { justify-self: end; }
+  .fg-pop { left: auto; right: 0; translate: none; }
+}
+@media (max-width: 1100px) and (min-aspect-ratio: 5/4) {
+  .fg-garden { height: clamp(180px, 27svh, 300px); }
+  .fg-mid { padding-top: 6px; }
+}
+@media (max-width: 640px) {
+  .fg { --t: clamp(62px, 17vw, 76px); }
+  .fg { padding-top: 74px; }
+  .fg-head { gap: 14px; }
+  .fg-mid { padding-top: 14px; gap: 14px; }
+  .fg-head, .fg-mid, .fg-base { width: calc(100% - 32px); }
+  .fg-top { gap: 14px; }
+  .fg-brand { font-size: 19px; }
+  .fg-cta .btn { --h: 44px; padding: 0 18px; font-size: 14.5px; }
+  .fg-word { font-size: clamp(40px, 12vw, 56px); }
+  .fg-doors { gap: 12px; }
+  .fg-dl { font-size: 12px; height: auto; white-space: normal; text-align: center; max-width: var(--t); }
+  .fg-dl i { display: none; }
+  .fg-voice { padding: 12px 10px 12px 14px; gap: 10px; }
+  .fg-vwave { display: none; }
+  .fg-vq { font-size: 15px; }
+  .fg-vpips { display: none; }
+  .fg-garden { height: clamp(170px, 25svh, 240px); }
+  .fg-base { gap: 0 20px; }
+  .fg-pages a + a::before { margin: 0 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fg-garden .st, .fg-garden .hr, .fg-garden .lf, .fg-garden .hp, .fg-garden .nd, .fg-garden .bud, .fg-garden .pt, .fg-garden .core, .fg-garden .wv, .fg-garden .wv rect, .fg-garden .orbit, .fg-garden .dots { transition: none !important; }
+  .fg-garden .pl, .fg-garden .sp, .fg-garden .du, .fg-garden .dots circle, .fg-garden .ping, .fg-wire i, .fg-live::after, .fg-voice.is-on .fg-vwave i, .fg-doors.is-flow .fg-tile, .fg-doors.is-flow .fg-tile::before { animation: none !important; }
+  .fg::before { transition: none; }
+}
+
+
+/* Touch sizing, as in styles.css: these footer controls were 21 to 37 px tall. */
+@media (pointer: coarse) {
+  .fg-pages a { padding: 12px 0; }
+  .fg-cred summary { display: inline-flex; align-items: center; min-height: 44px; }
+  .fg-up { min-height: 44px; }
+  .fg-brand { min-height: 44px; }
+}

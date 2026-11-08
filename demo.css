@@ -1,0 +1,151 @@
+/* Political Intelligence Platform · Live demo page (demo.html) only.
+   Three parts, loaded after every other stylesheet so these rules win without
+   touching the shared styles.css:
+     1. Ask the Data sized to one screen, so the wheel never gets stuck on it (#ask, ak-)
+     2. the three-demo launcher (#demos, ldm-card)
+     3. the full-screen demo viewer (#ldm, ldm-)
+   One accent per section: warm orange marks the launcher, the viewer is neutral
+   with a violet glow under the product. */
+
+/* ---------- 1. Ask the Data ---------- */
+/* the old chat was 760–900px tall and trapped the wheel (overscroll-behavior: contain):
+   now it fits the screen, and the page keeps scrolling once a list reaches its end */
+#ask .chat-log, #ask .uses { overscroll-behavior: auto; }
+#ask .chat-log:focus-visible { outline: 2px solid var(--purple); outline-offset: -4px; }
+
+@media (min-width: 1081px) {
+  #ask .ask-grid { height: clamp(540px, calc(100svh - 132px), 740px); }
+  #ask .chat { min-height: 0; max-height: none; height: 100%; }
+  #ask .ask-side { display: flex; flex-direction: column; min-height: 0; }
+  #ask .ask-side .side-card { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  #ask .uses { flex: 1; min-height: 0; overflow-y: auto; align-content: start; scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .16) transparent; }
+}
+@media (max-width: 1080px) {
+  #ask .chat { min-height: 0; max-height: none; height: clamp(480px, calc(100svh - 120px), 680px); }
+}
+
+.ak-proof { margin-top: clamp(18px, 2vw, 26px); }
+.ak-proof h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font-size: 16.5px; font-weight: 600; }
+.ak-proof h3 svg { width: 18px; height: 18px; color: var(--lilac); }
+/* hairlines come from the 1px gaps over the list's own background, so any wrap stays tidy */
+.ak-how {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px;
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: rgba(255, 255, 255, .08); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08);
+}
+.ak-how li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; padding: 20px 22px; background: #111114; color: var(--muted-foreground); font-size: 14px; line-height: 1.45; }
+.ak-how i { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .06); color: #fff; }
+.ak-how i svg { width: 16px; height: 16px; }
+.ak-how b { display: block; margin-bottom: 3px; color: #fff; font-size: 15px; font-weight: 600; }
+
+/* ---------- 2. Three live demos ---------- */
+.ldm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 22px); }
+.ldm-card {
+  position: relative; display: flex; flex-direction: column;
+  padding: 10px; border-radius: var(--radius-lg); cursor: pointer;
+  background: #111114; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .09);
+  transition: box-shadow .3s var(--ease), background-color .3s var(--ease);
+}
+.ldm-card:hover { background: #141418; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .2); }
+.ldm-shot { position: relative; aspect-ratio: 16 / 10; border-radius: 20px; overflow: hidden; background: #060607; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06); }
+.ldm-shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: left top; transition: transform .6s var(--ease); }
+.ldm-shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(6, 6, 7, .55)); pointer-events: none; }
+.ldm-play {
+  position: absolute; z-index: 1; left: 50%; top: 50%;
+  display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 18px; border-radius: 999px;
+  background: #fff; color: #060607; font-size: 14.5px; font-weight: 600;
+  opacity: 0; transform: translate(-50%, -50%) scale(.94);
+  transition: opacity .2s var(--ease), transform .3s var(--ease);
+}
+.ldm-play svg { width: 15px; height: 15px; }
+@media (hover: hover) {
+  .ldm-card:hover .ldm-shot img { transform: scale(1.03); }
+  .ldm-card:hover .ldm-play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+.ldm-body { flex: 1; display: grid; align-content: start; gap: 10px; padding: 22px 14px 20px; }
+.ldm-who { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--muted-foreground); font-size: 13.5px; }
+.ldm-who svg { width: 16px; height: 16px; color: #fe881b; }
+.ldm-body h3 { margin: 0; font-size: clamp(22px, 2vw, 26px); font-weight: 600; letter-spacing: -.02em; line-height: 1.15; }
+.ldm-body > p:not(.ldm-who) { margin: 0; color: var(--muted-foreground); font-size: 15px; line-height: 1.5; }
+.ldm-try { list-style: none; display: grid; gap: 9px; margin: 6px 0 0; padding: 16px 0 0; border-top: 1px solid rgba(255, 255, 255, .07); color: rgba(255, 255, 255, .84); font-size: 14.5px; }
+.ldm-try li { display: flex; align-items: center; gap: 10px; }
+.ldm-try li::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: #fe881b; }
+.ldm-go { margin: 0 4px 6px; }
+@media (max-width: 960px) {
+  .ldm-grid { grid-template-columns: minmax(0, 560px); justify-content: center; }
+}
+
+/* ---------- 3. Full-screen viewer ---------- */
+html.ldm-lock { overflow: hidden; }
+.ldm {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; flex-direction: column;
+  padding: 0 clamp(10px, 1.6vw, 24px) clamp(10px, 1.6vw, 24px);
+  background: #030304; color: #fff;
+  opacity: 0; transition: opacity .2s ease;
+}
+.ldm[hidden] { display: none; }
+.ldm.is-open { opacity: 1; }
+/* the product sits on a soft violet horizon, so the eye goes straight to it */
+.ldm::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(60% 40% at 50% 104%, rgba(129, 48, 255, .34), transparent 72%), radial-gradient(45% 26% at 50% -4%, rgba(172, 36, 255, .1), transparent 70%);
+}
+.ldm-bar { position: relative; flex: none; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px; padding: 14px 0; }
+.ldm-id { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.ldm-id > svg { flex: none; width: 30px; height: 30px; }
+.ldm-id b { display: block; font-size: 15px; font-weight: 600; line-height: 1.1; }
+.ldm-id small { display: block; margin-top: 2px; color: var(--muted-foreground); font-size: 12.5px; }
+.ldm-tabs { display: flex; gap: 4px; padding: 4px; border-radius: 14px; background: rgba(255, 255, 255, .05); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .09); }
+.ldm-tab {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 16px;
+  border: 0; border-radius: 10px; background: transparent; color: rgba(255, 255, 255, .66);
+  font: inherit; font-size: 14.5px; font-weight: 500; white-space: nowrap; cursor: pointer;
+  transition: background-color .2s var(--ease), color .2s var(--ease);
+}
+.ldm-tab:hover { color: #fff; background: rgba(255, 255, 255, .07); }
+.ldm-tab[aria-selected="true"] { background: #fff; color: #060607; }
+.ldm-tab svg { width: 16px; height: 16px; flex: none; }
+.ldm-tab:focus-visible, .ldm-btn:focus-visible { outline: 2px solid #b997ff; outline-offset: 2px; }
+.ldm-act { display: flex; justify-content: flex-end; gap: 8px; }
+.ldm-btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px;
+  border: 0; border-radius: 12px; background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+  color: #fff; font: inherit; font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: background-color .2s var(--ease);
+}
+.ldm-btn:hover { background: rgba(255, 255, 255, .12); }
+.ldm-btn svg { width: 16px; height: 16px; flex: none; }
+.ldm-stage { position: relative; flex: 1; min-height: 0; transform: translateY(16px) scale(.985); transform-origin: 50% 0; transition: transform .42s var(--ease); }
+.ldm.is-open .ldm-stage { transform: none; }
+.ldm-frame {
+  position: absolute; inset: 0; overflow: hidden; isolation: isolate;
+  border-radius: 20px; background: #060607;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .13), 0 40px 110px -40px rgba(129, 48, 255, .6);
+}
+.ldm-if { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; visibility: hidden; opacity: 0; transition: opacity .25s ease; }
+.ldm-if.is-on { visibility: visible; opacity: 1; }
+.ldm.is-loading .ldm-if.is-on { opacity: 0; }
+.ldm-load { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; color: var(--muted-foreground); font-size: 14.5px; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.ldm-load b { color: #fff; font-weight: 600; }
+.ldm.is-loading .ldm-load { opacity: 1; }
+.ldm-spin { width: 32px; height: 32px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .12); border-top-color: #b997ff; animation: ldm-spin .8s linear infinite; }
+@keyframes ldm-spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 980px) {
+  .ldm-bar { grid-template-columns: minmax(0, 1fr) auto; row-gap: 10px; padding: 10px 0 12px; }
+  .ldm-tabs { grid-column: 1 / -1; grid-row: 2; }
+  .ldm-tab { flex: 1; padding: 0 10px; }
+}
+@media (max-width: 560px) {
+  .ldm { padding: 0 8px 8px; }
+  .ldm-frame { border-radius: 14px; }
+  .ldm-id small, .ldm-lx { display: none; }
+  .ldm-btn { padding: 0 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ldm, .ldm-stage, .ldm-if, .ldm-shot img, .ldm-play { transition: none; }
+  .ldm-stage { transform: none; }
+  .ldm-spin { animation-duration: 2.4s; }
+}

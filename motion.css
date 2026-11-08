@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Motion layer · every marketing page (MOTION.md). Loads after styles.css.
+   Only transform and opacity move; curves are the journey's pi-out / pi-io.
+   ========================================================================== */
+:root {
+  --ease-out: cubic-bezier(.23, 1, .32, 1);
+  --ease-io: cubic-bezier(.77, 0, .175, 1);
+}
+
+/* ---------- reveals: rise into place once (motion.js adds .in) ---------- */
+.js .rv { opacity: 0; transform: translate3d(0, 18px, 0); transition: opacity 560ms var(--ease-out), transform 680ms var(--ease-out); transition-delay: var(--d, 0ms); }
+.js .rv-t { transform: translate3d(0, 14px, 0); }
+/* large blocks (dashboards, maps, figures) travel further and settle more slowly. Translation
+   only: scripts that measure children against their container stay exact mid-reveal */
+.js .rv-m { transform: translate3d(0, 30px, 0); transition-duration: 640ms, 800ms; }
+.js .rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .rv, .js .rv-t, .js .rv-m { transform: none; transition: opacity 250ms ease; }
+}
+
+/* ---------- far-off sections rest ---------- */
+[data-off] *, [data-off] *::before, [data-off] *::after { animation-play-state: paused !important; }
+
+/* ---------- hero intro: composited only, so it never freezes while scripts load ---------- */
+@keyframes hero-in { from { opacity: 0; transform: translate3d(0, 26px, 0); } }
+@keyframes hero-rise { from { opacity: 0; transform: translate3d(0, 64px, 0); } }
+
+/* hold the hero dashboard's height until dash.js fills it, so the next section never jumps
+   (measured: ~1,030 px laid out wide, ~2,050–2,290 px stacked below 1,100 px) */
+#heroApp:empty { min-height: 2050px; }
+@media (min-width: 1101px) { #heroApp:empty { min-height: 1030px; } }
+
+/* hero dashboard tilt, driven by the scroll position on the compositor */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-stage .browser { animation: pi-tilt linear both; animation-timeline: view(); animation-range: cover 26vh cover 88vh; }
+  }
+}
+@keyframes pi-tilt { from { transform: rotateX(16deg) scale(.93); } to { transform: none; } }
+
+/* voice ripples as plain ellipses: their scale and fade run on the compositor */
+.hz-rip { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.hz-rip i { position: absolute; left: calc(var(--cx) - var(--rx)); top: calc(var(--cy) - var(--ry)); width: calc(var(--rx) * 2); height: calc(var(--ry) * 2); border: 1px solid #fff; border-radius: 50%; opacity: 0; animation: hz-wave 12s cubic-bezier(.2, .6, .35, 1) calc(var(--k) * -2.4s) infinite paused; }
+.hz.is-live .hz-rip i { animation-play-state: running; }
+@media (prefers-reduced-motion: reduce) { .hz-rip { display: none; } }
+
+/* stars twinkle in three groups: three layers instead of one per star */
+.stars .st-g { position: absolute; inset: 0; animation: twinkle-g 7s ease-in-out infinite; animation-delay: var(--dl, 0s); }
+.stars .st-g i { animation: none; opacity: var(--o, 0.7); }
+@keyframes twinkle-g { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .stars .st-g { animation: none; opacity: 0.7; } }
+
+/* ---------- opening: the words rise only once the brand face is in (or after 300 ms),
+   so no line ever swaps font mid-animation (fonts-in is set in each page's head) ---------- */
+.js:not(.fonts-in) .hero .h-ln, .js:not(.fonts-in) .hero .lead, .js:not(.fonts-in) .hero .hero-cta { animation-play-state: paused; }
+
+/* sub-page heroes open like the home page: the sky dawns, then crumb, headline, lead and links rise */
+@keyframes ph-sky-in { from { opacity: 0; } }
+.js .ph-sky { animation: ph-sky-in 1.1s var(--ease-out) both; }
+.js .ph-in > * { animation: hero-in .8s var(--ease-out) both; }
+.js .ph-in > :nth-child(2) { animation-delay: 70ms; }
+.js .ph-in > :nth-child(3) { animation-delay: 140ms; }
+.js .ph-in > :nth-child(4) { animation-delay: 200ms; }
+.js:not(.fonts-in) .ph-in > * { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .js .ph-sky, .js .ph-in > * { animation: none; }
+}
+

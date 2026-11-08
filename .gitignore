@@ -1,0 +1,13 @@
+# drafts and old copies (not part of the live site)
+next/
+legacy/
+t-*.html
+
+# original PNG screenshots: the site uses the WebP copies
+assets/product/*.png
+
+# system / tooling
+.DS_Store
+**/.DS_Store
+.vercel
+node_modules/

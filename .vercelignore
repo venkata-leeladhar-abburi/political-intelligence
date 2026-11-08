@@ -1,0 +1,6 @@
+next/
+legacy/
+.DS_Store
+**/.DS_Store
+t-*.html
+assets/product/*.png

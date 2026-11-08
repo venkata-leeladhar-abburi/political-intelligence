@@ -1,0 +1,16 @@
+{
+  "name": "Political Intelligence Platform",
+  "short_name": "Political Intel",
+  "description": "Political intelligence and AI sentiment analysis: verified voter surveys, live dashboards and an AI analyst.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#060607",
+  "theme_color": "#060607",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

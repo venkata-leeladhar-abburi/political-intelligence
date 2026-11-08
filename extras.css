@@ -1,0 +1,96 @@
+/* Twelve extras on a winding path, then the violet horizon (product.html #features).
+   Built by extras.js. Prefix xt-. Proportions follow the reference: wide cards, large
+   node discs on the outer edge, slim side margins. */
+
+#features { padding-bottom: 0; }
+
+/* head: pill, two-line title, one line of context */
+.xt-head { display: grid; justify-items: center; gap: 18px; text-align: center; margin: clamp(110px, 11vw, 170px) auto clamp(64px, 7vw, 110px); max-width: 760px; }
+.xt-pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 9px; border-radius: 999px; background: #111114; box-shadow: inset 0 0 0 1px var(--border); font-size: 14px; font-weight: 600; color: #fff; }
+.xt-pill svg { width: 17px; height: 17px; color: #fff; }
+.xt-pill svg circle { fill: #8130ff; stroke: none; }
+.xt-pill svg path { stroke-width: 2.4; }
+.xt-head h3 { margin: 0; font-size: clamp(34px, 4.4vw, 58px); line-height: 1.06; letter-spacing: -0.02em; font-weight: 600; color: #fff; }
+.xt-head h3 .grad { display: block; }
+.xt-head p { margin: 0; color: var(--muted-foreground); font-size: var(--fs-lg); max-width: 56ch; }
+
+/* the path breaks out of the page column: nearly the full screen width */
+.xt { --node: 80px; --reach: 56px; --pad: calc(var(--reach) + var(--node) / 2);
+  position: relative; width: min(1340px, 100vw - 32px); margin-left: 50%; transform: translateX(-50%); }
+.xt-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.xt-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+.xt-base { fill: none; stroke: rgba(255, 255, 255, 0.2); stroke-width: 1.5; stroke-dasharray: 0.5 7; stroke-linecap: round; }
+.xt-seg path { fill: none; stroke: inherit; stroke-linecap: butt; }
+.xt-halo { stroke-width: 18; opacity: 0.09; }
+.xt-glow { stroke-width: 7; opacity: 0.28; }
+.xt-line { stroke-width: 3; }
+
+.xt-list { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0 var(--pad); display: grid; gap: clamp(34px, 4vw, 60px); }
+.xt-item { position: relative; width: 52%; margin-left: var(--x); }
+.xt-card { position: relative; z-index: 1; min-height: 156px; display: flex; align-items: center; padding: 36px 44px; border-radius: 20px; background: radial-gradient(circle at 0 100%, #19181e, #121215 70%); box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.8); }
+.xt-card b { display: block; font-size: clamp(19px, 1.65vw, 23px); font-weight: 600; letter-spacing: -0.01em; color: #fff; margin-bottom: 12px; }
+.xt-card span { display: block; color: var(--muted-foreground); font-size: clamp(15.5px, 1.2vw, 17px); line-height: 1.55; max-width: 46ch; }
+.xt-tx { transition: opacity 0.5s cubic-bezier(.2, .8, .2, 1); }
+
+/* the node: a large dark disc with a soft edge that hides the line where it passes */
+.xt-node { position: absolute; z-index: 2; top: 50%; width: var(--node); height: var(--node); margin-top: calc(var(--node) / -2); border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(closest-side, #131317 0 80%, rgba(19, 19, 23, 0.85) 88%, rgba(19, 19, 23, 0) 100%); }
+.xt-node::after { content: ""; position: absolute; inset: 14%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, rgba(202, 69, 255, 0.28), rgba(202, 69, 255, 0)); opacity: 0; transition: opacity 0.6s; }
+.xt-item.l .xt-node { left: calc(var(--reach) * -1 - var(--node) / 2); }
+.xt-item.r .xt-node { right: calc(var(--reach) * -1 - var(--node) / 2); }
+.xt-node svg { width: 62%; height: 62%; overflow: visible; transition: opacity 0.5s, filter 0.5s; }
+
+/* waiting: ahead of the line */
+.xt-item:not(.lit) .xt-tx { opacity: 0.36; }
+.xt-item:not(.lit) .xt-node svg { opacity: 0.35; filter: grayscale(1); }
+.xt-item.lit .xt-node::after { opacity: 1; }
+
+/* the ring the line ends on */
+.xt-ring { position: relative; z-index: 2; width: 60px; height: 60px; margin: clamp(90px, 9vw, 130px) auto 0; }
+.xt-ring svg { width: 100%; height: 100%; opacity: 0.3; filter: grayscale(1); transition: opacity 0.6s, filter 0.6s; }
+.xt-ring.lit svg { opacity: 1; filter: drop-shadow(0 0 10px rgba(202, 69, 255, 0.5)); }
+
+/* the horizon, after the reference's closing band: a dark dome tilted to the left,
+   a pink rim that burns brightest on the right, a deep violet field below */
+.xt-hz {
+  position: relative; isolation: isolate; overflow: clip; text-align: center;
+  margin: clamp(20px, 3vw, 40px) clamp(8px, 1.2vw, 16px) 0; border-radius: 0 0 var(--radius-lg, 29px) var(--radius-lg, 29px);
+  padding: clamp(20px, 3vw, 40px) 0 clamp(300px, 34vw, 520px);
+  background:
+    linear-gradient(180deg, #060607 0%, rgba(6, 6, 7, 0) 26%),
+    radial-gradient(ellipse 88% 66% at 38% 6%, #060607 0 56%, rgba(6, 6, 7, 0.75) 66%, rgba(6, 6, 7, 0) 82%),
+    radial-gradient(ellipse 96% 76% at 38% 6%, rgba(247, 159, 255, 0) 62%, rgba(247, 159, 255, 0.62) 74%, rgba(247, 159, 255, 0) 90%),
+    radial-gradient(ellipse 44% 52% at 102% 34%, rgba(247, 159, 255, 0.95), rgba(236, 120, 220, 0.5) 40%, rgba(202, 69, 255, 0) 74%),
+    radial-gradient(ellipse 30% 40% at -2% 62%, rgba(202, 69, 255, 0.85), rgba(202, 69, 255, 0) 72%),
+    radial-gradient(ellipse 70% 40% at 50% 104%, rgba(109, 108, 255, 0.55), rgba(109, 108, 255, 0) 70%),
+    linear-gradient(180deg, #2a0866 0%, #7a2bd6 48%, #9f41ed 70%, #7d22e8 100%);
+}
+.xt-hz .wrap { position: relative; z-index: 1; display: grid; justify-items: center; gap: 22px; }
+.xt-hz h2 { margin: 0; font-size: clamp(38px, 5vw, 68px); line-height: 1.04; letter-spacing: -0.02em; font-weight: 600; color: #fff; }
+.xt-hz h2 .grad { display: block; }
+.xt-hz p { margin: 0; color: #d9cdf2; font-size: var(--fs-lg); max-width: 50ch; }
+.xt-hz .btn { margin-top: 18px; }
+
+/* the swing chart now sits before the path */
+#features .swing-card { margin-top: clamp(64px, 7vw, 104px); }
+
+@media (max-width: 1180px) { .xt { --node: 68px; --reach: 46px; } .xt-item { width: 56%; margin-left: calc(var(--x) * 0.8); } .xt-card { padding: 30px 34px; min-height: 140px; } }
+@media (max-width: 860px) {
+  .xt { --node: 52px; --reach: 0px; width: auto; margin-left: 0; transform: none; }
+  .xt-list { padding: 0; gap: 16px; }
+  .xt-item, .xt-item.l, .xt-item.r { width: auto; margin-left: 0; padding-left: 66px; }
+  .xt-item.l .xt-node, .xt-item.r .xt-node { left: 0; right: auto; }
+  .xt-card { padding: 22px 22px 24px; min-height: 0; }
+  .xt-card b { font-size: 18px; margin-bottom: 8px; }
+  .xt-ring { margin-left: 4px; margin-right: auto; width: 44px; height: 44px; }
+  .xt-hz { padding-bottom: 230px; }
+}
+@media (max-width: 700px) {
+  .xt-hz { background:
+    linear-gradient(180deg, #060607 0%, rgba(6, 6, 7, 0) 26%),
+    radial-gradient(ellipse 150% 60% at 40% 6%, #060607 0 58%, rgba(6, 6, 7, 0.7) 68%, rgba(6, 6, 7, 0) 82%),
+    radial-gradient(ellipse 160% 70% at 40% 6%, rgba(247, 159, 255, 0) 64%, rgba(247, 159, 255, 0.6) 75%, rgba(247, 159, 255, 0) 90%),
+    radial-gradient(ellipse 70% 40% at 104% 40%, rgba(247, 159, 255, 0.9), rgba(202, 69, 255, 0) 74%),
+    linear-gradient(180deg, #2a0866 0%, #7a2bd6 48%, #9f41ed 70%, #7d22e8 100%); }
+}
+@media (prefers-reduced-motion: reduce) { .xt-tx, .xt-node svg, .xt-ring svg { transition: none; } }

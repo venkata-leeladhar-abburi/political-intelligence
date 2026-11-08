@@ -1,0 +1,212 @@
+/* Political Intelligence Platform · multi-page additions
+   Page heads (violet sky over a dark planet, after the reference horizon), the Roles section,
+   current-page nav state and demo links. Same tokens as styles.css; one accent per section. */
+
+/* ---------- current page in the nav ---------- */
+.nav-links a[aria-current="page"] { color: var(--ink); font-weight: 500; }
+.nav-links a[aria-current="page"]::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 5px; height: 2px; border-radius: 2px; background: var(--ec-gradient-line); }
+
+/* ---------- page head ---------- */
+.ph { position: relative; overflow: hidden; background: #030304; text-align: center; padding-bottom: clamp(64px, 7vw, 104px); }
+.ph-sky { position: absolute; top: 12px; left: 12px; right: 12px; height: 430px; border-radius: 29px 29px 0 0; overflow: hidden; background: linear-gradient(180deg, #6d6cff 0%, #8130ff 34%, #ac24ff 66%, #300681 100%); }
+.ph-sky::before { content: ''; position: absolute; inset: 0; background: radial-gradient(60% 70% at 18% 20%, rgba(247, 159, 255, .28), transparent 70%), radial-gradient(50% 60% at 85% 30%, rgba(221, 149, 255, .22), transparent 70%); }
+.ph-sky::after { content: ''; position: absolute; left: -28%; right: -28%; top: 60%; height: 320%; border-radius: 50%; background: #030304; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .9), 0 -4px 22px 3px rgba(247, 159, 255, .7), 0 -28px 90px 26px rgba(221, 149, 255, .38); }
+.ph-in { position: relative; z-index: 1; display: grid; justify-items: center; gap: 20px; padding-top: 318px; }
+.ph-crumb { margin: 0; font-size: 14px; color: var(--muted-foreground); }
+.ph-crumb a { color: inherit; text-decoration: none; }
+.ph-crumb a:hover { color: #fff; }
+.ph .display { max-width: 18ch; }
+.ph .lead { text-align: center; }
+.ph-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 6px; }
+.ph-links a { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 999px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .1); color: #fff; font-size: 14.5px; text-decoration: none; transition: background .35s var(--ease), border-color .35s var(--ease); }
+.ph-links a:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .22); }
+.ph-links svg { width: 16px; height: 16px; }
+@media (max-width: 760px) {
+  .ph-sky { height: 300px; left: 8px; right: 8px; top: 8px; border-radius: 22px 22px 0 0; }
+  .ph-sky::after { left: -60%; right: -60%; top: 58%; }
+  .ph-in { padding-top: 214px; }
+}
+
+/* ---------- roles (home) ---------- */
+.rl { background: #030304; }
+.rl .h2 .rl-dim { color: rgba(255, 255, 255, .5); }
+.rl-flow { list-style: none; margin: 0 auto clamp(40px, 5vw, 64px); padding: 0; max-width: 1040px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); position: relative; }
+.rl-flow::before { content: ''; position: absolute; top: 21px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, rgba(254, 136, 27, 0), rgba(254, 136, 27, .7) 20%, rgba(254, 136, 27, .7) 80%, rgba(254, 136, 27, 0)); }
+.rl-flow li { position: relative; display: grid; justify-items: center; gap: 10px; text-align: center; padding: 0 10px; }
+.rl-flow i { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: #030304; box-shadow: inset 0 0 0 1px rgba(254, 136, 27, .7); color: #ffa552; }
+.rl-flow i svg { width: 18px; height: 18px; }
+.rl-flow b { font-weight: 500; font-size: 16px; }
+.rl-flow span { font-size: 14px; color: var(--muted-foreground); max-width: 24ch; }
+.rl-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.rl-card { position: relative; display: grid; gap: 18px; align-content: start; padding: clamp(24px, 2.6vw, 34px); border-radius: 29px; background: var(--ec-card); border: 1px solid rgba(169, 151, 206, .14); overflow: hidden; }
+.rl-card.on { border-color: rgba(254, 136, 27, .45); }
+.rl-card.on::before { content: ''; position: absolute; inset: -40% 10% auto; height: 70%; background: radial-gradient(closest-side, rgba(254, 136, 27, .2), transparent); pointer-events: none; }
+.rl-top { display: flex; align-items: center; gap: 14px; }
+.rl-ic { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; background: rgba(255, 255, 255, .06); color: #fff; }
+.rl-card.on .rl-ic { background: var(--ec-warm); }
+.rl-ic svg { width: 22px; height: 22px; }
+.rl-card h3 { margin: 0; font-size: 24px; font-weight: 500; letter-spacing: -.01em; }
+.rl-card .who { margin: 2px 0 0; font-size: 14px; color: var(--muted-foreground); }
+.rl-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+.rl-card li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; font-size: 15.5px; line-height: 1.45; color: rgba(255, 255, 255, .86); }
+.rl-card li svg { width: 18px; height: 18px; margin-top: 2px; color: rgba(255, 255, 255, .5); }
+.rl-card.on li svg { color: #ffa552; }
+.rl-card .link-arrow { margin-top: 4px; }
+.rl-proof { margin-top: clamp(36px, 4vw, 56px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid rgba(169, 151, 206, .14); }
+.rl-proof div { padding: 22px 20px 0 0; display: grid; gap: 6px; }
+.rl-proof b { font-size: 17px; font-weight: 500; }
+.rl-proof span { font-size: 14.5px; color: var(--muted-foreground); line-height: 1.5; }
+.rl-sar { margin-top: 18px; display: grid; grid-template-columns: minmax(0, 1.1fr) auto minmax(0, 1fr); gap: 14px; align-items: center; padding: 18px 20px; border-radius: 20px; background: rgba(255, 255, 255, .04); border: 1px solid rgba(169, 151, 206, .14); }
+.rl-sar .te { font-family: 'Noto Sans Telugu', var(--font); font-size: 16px; line-height: 1.6; }
+.rl-sar small { display: block; color: var(--muted-foreground); font-size: 14px; margin-top: 2px; }
+.rl-sar > svg { width: 22px; height: 22px; color: #ffa552; }
+.rl-sar .rl-v { display: grid; gap: 6px; }
+.rl-sar .rl-v b { font-weight: 500; }
+.rl-tag { justify-self: start; display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; font-size: 12.69px; font-weight: 700; background: rgba(254, 136, 27, .14); color: #ffa552; }
+@media (max-width: 1000px) {
+  .rl-grid { grid-template-columns: minmax(0, 1fr); }
+  .rl-proof { grid-template-columns: minmax(0, 1fr); }
+  .rl-sar { grid-template-columns: minmax(0, 1fr); }
+  .rl-sar > svg { rotate: 90deg; }
+}
+@media (max-width: 700px) {
+  .rl-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
+  .rl-flow::before { display: none; }
+}
+
+/* ---------- demo links inside product sections ---------- */
+.demo-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.demo-band { margin-top: clamp(28px, 3vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; text-align: center; }
+.demo-band p { margin: 0 auto; width: 100%; max-width: 76ch; color: var(--muted-foreground); font-size: 15px; }
+
+/* ---------- where to next (built by pages.js, from the page list) ---------- */
+.wn .wrap { display: grid; gap: 16px; }
+.wn-big { text-decoration: none; transition: border-color .35s var(--ease); }
+.wn-big:hover { border-color: rgba(254, 136, 27, .45); }
+.wn-big .wn-line { margin: 0; font-size: 17px; line-height: 1.55; color: rgba(255, 255, 255, .86); max-width: 62ch; }
+.wn-big .link-arrow { color: #ffa552; }
+.wn-rest { grid-template-columns: repeat(auto-fit, minmax(176px, 1fr)); }
+.wn-rest .ct-tile { min-height: 148px; font-size: 16.5px; text-decoration: none; }
+.wn-rest .ct-tile .ring { width: 54px; height: 54px; }
+.wn-rest .ct-tile .ring svg { width: 23px; height: 23px; }
+@media (max-width: 700px) {
+  .wn-rest { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- the real product, embedded (live demo) ---------- */
+.live-frame { height: min(78vh, 780px); background: #060607; }
+.live-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (max-width: 760px) { .live-frame { height: min(80vh, 620px); } }
+
+/* ---------- real product screens, inside the existing browser frame ---------- */
+.browser img { display: block; width: 100%; height: auto; }
+.shot { margin: 0; }
+.shot figcaption { text-align: center; color: var(--muted-foreground); font-size: var(--fs-md); margin: 14px 0 0; }
+.shots { display: grid; gap: clamp(28px, 3.4vw, 48px); margin-top: var(--s3); }
+.shots-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 900px) { .shots-2 { grid-template-columns: minmax(0, 1fr); } }
+
+
+/* the three role cards are the same height, so their links should start from the
+   same line: the list takes the slack and the link sits on the floor of the card */
+.rl-grid .rl-card { display: flex; flex-direction: column; }
+.rl-grid .rl-card > .link-arrow { margin-top: auto; }
+
+
+/* Touch sizing for controls defined in refresh.css and later in styles.css:
+   this file loads after both, so these win on the same specificity. */
+@media (pointer: coarse) {
+  .gl-pips button, .gl-lang button { height: 44px; }
+  .gl button, .gl a[href] { min-height: 44px; }
+  .cx .presets button { height: 44px; }
+}
+
+
+/* ==========================================================================
+   PRICING · the three charges (plan.html #engage) and the running costs below
+   One accent for the whole pair of sections: warm. The old rules gave each fee
+   card its own colour (two near-identical purples, then the warm gradient) on
+   dark navy slabs inside a white sheet; DESIGN.md §colour asks for one accent
+   per section, never one colour per item. Here the sheet is the faint lilac so
+   white cards separate from it, every tile is warm, the chosen rate is a solid
+   ink pill (never a colour), and the only loud thing on the page is the
+   first-year total. This file loads after styles.css, so these win.
+   ========================================================================== */
+#engage .sheet { background: var(--light-navy); }
+#engage .pkg { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(14px, 1.6vw, 22px); }
+
+/* --- the three charges, read as one row of steps --- */
+#engage .charges { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(14px, 1.6vw, 22px); }
+#engage .fee {
+  display: flex; flex-direction: column; color: var(--ink);
+  padding: clamp(22px, 2.2vw, 30px); border-radius: var(--radius-lg); background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(26, 11, 84, 0.07), 0 20px 44px -34px rgba(26, 11, 84, 0.42);
+  transition: box-shadow var(--dur-fast, .22s) var(--ease, ease), transform var(--dur-fast, .22s) var(--ease, ease);
+}
+#engage .fee:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px rgba(26, 11, 84, 0.09), 0 26px 52px -34px rgba(26, 11, 84, 0.5); }
+#engage .fee-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+#engage .fee .fi { width: 46px; height: 46px; border-radius: 15px; display: grid; place-items: center; background: rgba(254, 136, 27, 0.13); }
+#engage .fee .fi svg { width: 22px; height: 22px; color: #d9650a; }
+#engage .fee-n { font-size: 12.5px; font-weight: 800; letter-spacing: 0.16em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+#engage .fee h4 { margin: 0 0 6px; font-size: 21px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
+#engage .fee p { margin: 0 0 20px; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+#engage .fee-ctl { margin-top: 0; }
+
+#engage .fee-in { display: flex; align-items: center; gap: 8px; max-width: none; height: 54px; padding: 0 16px; border-radius: 14px; background: var(--light-navy); box-shadow: inset 0 0 0 1px rgba(26, 11, 84, 0.10); transition: box-shadow var(--dur-instant, .12s) ease, background-color var(--dur-instant, .12s) ease; }
+#engage .fee-in:focus-within { background: #fff; box-shadow: inset 0 0 0 2px #d9650a; }
+#engage .fee-in.err { box-shadow: inset 0 0 0 2px #c22a3d; }
+#engage .fee-in span { color: var(--ink-3); font-weight: 700; font-size: 15px; white-space: nowrap; }
+#engage .fee-in input { flex: 1; width: 100%; min-width: 0; border: 0; background: none; color: var(--ink); font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
+#engage .fee-in input:focus { outline: none; }
+#engage .fee-in input::placeholder { color: var(--ink-3); font-weight: 600; font-size: 15.5px; }
+#engage .fee .hint { display: block; min-height: 19px; margin-top: 7px; font-size: 13px; line-height: 1.45; color: #c22a3d; }
+#engage .fee-note { display: block; margin-top: 10px; font-size: 13px; line-height: 1.45; color: var(--ink-3); }
+
+/* the chosen rate is a solid ink pill, never a colour (DESIGN.md) */
+#engage .ppi { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+#engage .ppi button { height: 50px; min-width: 0; padding: 0 8px; border: 0; border-radius: 13px; background: var(--light-navy); box-shadow: inset 0 0 0 1px rgba(26, 11, 84, 0.08); color: var(--ink-2); font-weight: 800; font-size: 15.5px; font-variant-numeric: tabular-nums; transition: background-color var(--dur-instant, .12s) ease, color var(--dur-instant, .12s) ease; }
+#engage .ppi button:hover { background: #e7e7fb; color: var(--ink); }
+#engage .ppi button[aria-pressed="true"] { background: var(--ink); color: #fff; box-shadow: none; }
+
+/* --- the payoff: the one loud thing in the section --- */
+#engage .est {
+  position: relative; overflow: hidden; display: grid; align-items: center;
+  grid-template-columns: minmax(0, 1fr) auto; gap: clamp(20px, 3vw, 46px);
+  padding: clamp(22px, 2.4vw, 32px) clamp(24px, 2.8vw, 38px);
+  border-radius: var(--radius-lg); background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(26, 11, 84, 0.07), 0 24px 52px -34px rgba(26, 11, 84, 0.42);
+}
+#engage .est::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, #ac24ff, #fe881b 68%, #ffd600); }
+#engage .est h3 { margin: 0 0 3px; font-size: 19px; font-weight: 600; letter-spacing: -0.02em; }
+#engage .est-l > p { margin: 0 0 14px; font-size: 14px; color: var(--ink-3); }
+#engage .est-rows { display: grid; gap: 2px; }
+#engage .est .row { display: flex; justify-content: space-between; gap: 16px; margin: 0; padding: 9px 12px; border-radius: 10px; font-size: 15px; font-weight: 600; color: var(--ink-2); font-variant-numeric: tabular-nums; background: none; }
+#engage .est .row:nth-child(odd) { background: var(--light-navy); }
+#engage .est .row span:last-child { color: var(--ink); font-weight: 700; }
+#engage .est-r { display: grid; gap: 6px; justify-items: end; text-align: right; padding-left: clamp(16px, 2.4vw, 34px); border-left: 1px solid var(--ink-line); }
+#engage .est-lbl { font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em; color: var(--ink-3); }
+#engage .est-tot {
+  font-size: clamp(34px, 4.2vw, 58px); font-weight: 600; line-height: 1; letter-spacing: -0.035em; font-variant-numeric: tabular-nums;
+  background-image: linear-gradient(90deg, #8130ff, #d9650a 70%, #c2560a);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+#engage .est-tot small { display: block; margin-top: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0; color: var(--ink-3); -webkit-text-fill-color: var(--ink-3); }
+
+/* --- what you get: supporting detail, so it reads as a quiet index --- */
+#engage .pkg-inc { padding: clamp(22px, 2.4vw, 32px) clamp(24px, 2.8vw, 38px); border-radius: var(--radius-lg); background: #fff; box-shadow: inset 0 0 0 1px rgba(26, 11, 84, 0.07); }
+#engage .pkg-inc h3 { margin: 0 0 3px; font-size: var(--fs-2xl); font-weight: 600; letter-spacing: -0.02em; }
+#engage .pkg-inc > p { margin: 0; font-size: 15px; color: var(--ink-3); }
+#engage .inc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(18px, 2.2vw, 34px); margin-top: 18px; }
+#engage .inc div { display: flex; gap: 10px; align-items: flex-start; padding: 11px 0; border-top: 1px solid var(--ink-line); border-radius: 0; background: none; font-weight: 600; font-size: 14.5px; line-height: 1.4; color: var(--ink-2); }
+#engage .inc svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 1px; color: #d9650a; }
+
+@media (max-width: 900px) {
+  #engage .est { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  #engage .est-r { justify-items: start; text-align: left; padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--ink-line); width: 100%; }
+}
+@media (max-width: 1100px) { #engage .inc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { #engage .inc { grid-template-columns: minmax(0, 1fr); } #engage .ppi { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* --- running costs: the same accent, so the pair reads as one page --- */
+#monthly .sw[aria-checked="true"] { background: var(--orange); }
+#monthly .mc-sum { box-shadow: inset 0 0 0 1px rgba(254, 136, 27, 0.26); }
