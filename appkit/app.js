@@ -41,7 +41,7 @@
   function drawSide() {
     const q = M.queue.filter((x) => x.status === 'review').length;
     const counts = { verify: q, field: M.agents.filter((a) => ['fence', 'mock', 'offline'].includes(a.status)).length };
-    side.innerHTML = `<a class="brand" href="index.html" aria-label="Political Intelligence Platform home"><svg aria-hidden="true"><use href="#logo"/></svg><span><b>Political Intelligence</b><small>${S.role === 'field' ? 'Field App' : 'Command Center'}</small></span></a>
+    side.innerHTML = `<a class="brand" href="/" aria-label="Political Intelligence Platform home"><svg aria-hidden="true"><use href="#logo"/></svg><span><b>Political Intelligence</b><small>${S.role === 'field' ? 'Field App' : 'Command Center'}</small></span></a>
       ${NAV.map(([g, items]) => {
         const vis = items.filter(([k]) => S.role === 'field' ? M.roleCan('field', k) : k !== 'fieldapp' || true);
         if (!vis.length) return '';
@@ -49,7 +49,7 @@
       }).join('')}
       <div class="side-foot">${S.role === 'field' ? '' : `<div class="silence"><button type="button" class="switch" role="switch" id="silSw" aria-checked="${M.silence ? 'true' : 'false'}" aria-label="Election silence"></button><div><b>Election silence</b><span>${M.silence ? 'On: results hidden from clients' : 'Off: clients see results'}</span></div></div>`}
         <div class="who" style="padding:6px 8px"><span class="av warm">${U.initials(ME[S.role][0])}</span><span style="min-width:0"><b style="display:block;font-size:14px">${esc(ME[S.role][0])}</b><small class="muted">${esc(ME[S.role][1])}</small></span></div>
-        <a class="btn ghost sm" href="portal.html">${ic('crown')}Open Client Portal</a></div>`;
+        <a class="btn ghost sm" href="/portal">${ic('crown')}Open Client Portal</a></div>`;
     $$('.nav-i', side).forEach((b) => b.addEventListener('click', () => {
       if (b.classList.contains('locked')) { U.toast(`${M.ROLES[S.role].name} has no access to ${TITLE[b.dataset.p]}. An admin can change this in Users and roles.`); return; }
       closeMenu(); S.go(b.dataset.p);

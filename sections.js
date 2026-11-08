@@ -57,11 +57,11 @@
     ['phone', 'Field App', 'An Android app that collects interviews offline, in Telugu, with a voice clip, GPS and time on every answer.', ['Offline sync', 'Voice clips', 'GPS fence', 'Secret ballot', 'Consent'], '#apps', 'See the Field App'],
     ['laptop', 'Command Center', 'Plan rounds, set quotas, watch agents live and review every flagged interview from one screen.', ['Survey builder', 'Quotas', 'Live field map', 'Quality queue', 'Agent pay'], '#apps', 'See the Command Center'],
     ['crown', 'Client Portal', 'A calm summary for leaders and strategists on laptop and phone, with reports in Telugu and English.', ['Seat summaries', 'Evidence player', 'PDF reports', 'Alerts'], '#apps', 'See the Client Portal'],
-    ['map', 'Live Map', 'All 28 districts and 175 seats. Switch what the map shows and click anywhere for the full story.', ['28 districts', '175 seats', '5 map modes', 'Search', 'Drill-down'], 'demo.html#map', 'Open the live map'],
-    ['bars', 'Analytics', 'Mood, intention, issues, age and gender cuts, round-by-round change and the seat outlook.', ['Sentiment', 'Intention', 'Issues', 'Age and gender', 'Round vs round'], 'demo.html#demo-command', 'See the dashboards'],
-    ['spark', 'AI Analyst', 'Ask in English or Telugu. Get the numbers, the margin of error and the voices behind them.', ['English and Telugu', 'Numbers and quotes', 'Sample and margin', 'Guardrails'], 'demo.html#ask', 'Try Ask the Data'],
-    ['ear', 'Speech Engine', 'Our own Telugu speech engine turns voice into text and scores every issue, for about ₹0.04 a minute.', ['Telugu speech', 'Issue sentiment', 'Emotion', 'Human review'], 'how.html#engine', 'See the speech engine'],
-    ['shield', 'Fraud Shield', 'Every interview is checked: booth fence, length, fake GPS, and a voice already heard elsewhere.', ['Geo-fence', 'Duration', 'Mock GPS', 'Same voice', 'Back-checks'], 'how.html#how', 'See the checks'],
+    ['map', 'Live Map', 'All 28 districts and 175 seats. Switch what the map shows and click anywhere for the full story.', ['28 districts', '175 seats', '5 map modes', 'Search', 'Drill-down'], '/demo#map', 'Open the live map'],
+    ['bars', 'Analytics', 'Mood, intention, issues, age and gender cuts, round-by-round change and the seat outlook.', ['Sentiment', 'Intention', 'Issues', 'Age and gender', 'Round vs round'], '/demo#demo-command', 'See the dashboards'],
+    ['spark', 'AI Analyst', 'Ask in English or Telugu. Get the numbers, the margin of error and the voices behind them.', ['English and Telugu', 'Numbers and quotes', 'Sample and margin', 'Guardrails'], '/demo#ask', 'Try Ask the Data'],
+    ['ear', 'Speech Engine', 'Our own Telugu speech engine turns voice into text and scores every issue, for about ₹0.04 a minute.', ['Telugu speech', 'Issue sentiment', 'Emotion', 'Human review'], '/how#engine', 'See the speech engine'],
+    ['shield', 'Fraud Shield', 'Every interview is checked: booth fence, length, fake GPS, and a voice already heard elsewhere.', ['Geo-fence', 'Duration', 'Mock GPS', 'Same voice', 'Back-checks'], '/how#how', 'See the checks'],
     ['coins', 'Savings', 'See what paid speech APIs would cost, what our engine saves, and the full monthly bill.', ['Cost calculator', 'Monthly bill', 'Simple charges'], '#savings', 'Estimate your savings'],
   ];
   function Contents() {

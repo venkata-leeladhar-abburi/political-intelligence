@@ -9,9 +9,9 @@
   'use strict';
 
   const DEMOS = {
-    command: { name: 'Command Center', src: 'app.html?role=command' },
-    portal: { name: 'Client Portal', src: 'portal.html' },
-    field: { name: 'Field App', src: 'app.html?role=field', path: 'fieldapp' },
+    command: { name: 'Command Center', src: '/app?role=command' },
+    portal: { name: 'Client Portal', src: '/portal' },
+    field: { name: 'Field App', src: '/app?role=field', path: 'fieldapp' },
   };
 
   const dv = document.getElementById('ldm');

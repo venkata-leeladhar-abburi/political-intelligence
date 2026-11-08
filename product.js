@@ -57,16 +57,16 @@
   const APPS = [
     { img: 'field-app', url: 'Field App · today’s interviews', who: 'Field agents, like Ravi', line: 'Collect a verified interview at the doorstep, with one thumb and no signal.',
       feats: ['Consent, tapped answers and the voter’s recorded voice in one flow', 'Works offline for days and syncs safely when signal returns', 'GPS, time and a secret-ballot screen on every interview'],
-      biz: 'Every paid interview starts here. Clean collection is what lets us charge for proof.', go: ['demo.html#demo-field', 'Open the Field App'] },
+      biz: 'Every paid interview starts here. Clean collection is what lets us charge for proof.', go: ['/demo#demo-field', 'Open the Field App'] },
     { img: 'command-center-dark', url: 'Command Center · Overview', who: 'Supervisors, analysts and admins', line: 'Run every survey round: the field force, verification, analytics and reports.',
       feats: ['A live agent map and a queue for every flagged interview', 'Weighted results, round-on-round compare and ten report types', 'Users, roles, election silence and costs in one place'],
-      biz: 'Agencies work in it every day of a round. Daily use is what keeps a client with us.', go: ['demo.html#demo-command', 'Open the Command Center'] },
+      biz: 'Agencies work in it every day of a round. Daily use is what keeps a client with us.', go: ['/demo#demo-command', 'Open the Command Center'] },
     { img: 'client-portal', url: 'Client Portal · Today', who: 'Strategists and party leaders', line: 'Today’s read on one screen: who leads, by how much, and where to act.',
       feats: ['Seat ranges, approval, leaders and issues at a glance', 'Tap any district or seat for its full story', 'Hear what voters said, in their own voice'],
-      biz: 'This is what the buyer pays for, readable in five seconds on a phone.', go: ['demo.html#demo-portal', 'Open the Client Portal'] },
+      biz: 'This is what the buyer pays for, readable in five seconds on a phone.', go: ['/demo#demo-portal', 'Open the Client Portal'] },
     { img: 'ai-analyst', url: 'Command Center · AI analyst', who: 'Anyone with access, in English or Telugu', line: 'Ask in plain words. Get the number, the margin and the voices behind it.',
       feats: ['Counts from verified data, never guesses', 'Finds matching quotes across thousands of transcripts', 'Refuses when a sample is too small to be honest'],
-      biz: 'Our premium feature, and the reason a strategist opens the platform every day.', go: ['demo.html#ask', 'Ask it a question'] },
+      biz: 'Our premium feature, and the reason a strategist opens the platform every day.', go: ['/demo#ask', 'Ask it a question'] },
   ];
   function Apps() {
     const host = $('#pdApps');

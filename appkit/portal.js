@@ -9,7 +9,7 @@
   const TABS = [['today', 'Today', 'home'], ['map', 'Map', 'map'], ['seats', 'Seats', 'pin'], ['voices', 'Voices', 'chat'], ['ask', 'Ask', 'spark'], ['reports', 'Reports', 'download']];
   let tab = (location.hash.slice(1) && TABS.some(([k]) => k === location.hash.slice(1))) ? location.hash.slice(1) : 'today';
   const root = $('#portal');
-  root.innerHTML = `<header class="pt-top"><a class="brand" href="index.html"><svg aria-hidden="true"><use href="#logo"/></svg><span><b>Political Intelligence</b><small>Client Portal</small></span></a>
+  root.innerHTML = `<header class="pt-top"><a class="brand" href="/"><svg aria-hidden="true"><use href="#logo"/></svg><span><b>Political Intelligence</b><small>Client Portal</small></span></a>
       <nav class="pt-tabs" aria-label="Portal">${TABS.map(([k, l, i]) => `<a href="#${k}" data-t="${k}">${ic(i)}<span>${l}</span></a>`).join('')}</nav>
       <div class="acts"><label class="sr" for="ptRound">Round</label><select class="sel hide-s" id="ptRound">${M.ROUNDS.filter((r) => r.state === 'closed').map((r) => `<option value="${r.id}"${r.id === M.round ? ' selected' : ''}>${r.name}</option>`).join('')}</select><button type="button" class="btn icon" id="ptTheme" aria-label="Switch theme">${ic('sun')}</button><span class="av warm" title="Strategy desk">SD</span></div></header>
     <main class="pt-page" id="ptPage" tabindex="-1"></main>`;

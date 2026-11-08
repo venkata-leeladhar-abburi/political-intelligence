@@ -9,19 +9,20 @@
 
   /* file, label, icon, one line, the words on the big card's link */
   const PAGES = [
-    ['index.html', 'Home', 'home', 'The whole case in short: four cards, the product working, the cost advantage and how the business grows.', 'Back to the home page'],
-    ['product.html', 'Product', 'layers', 'What we sell: three apps and an AI analyst, the five people who use them, the paid rounds of an election, and the competition.', 'See the product'],
-    ['how.html', 'How it works', 'route', 'One interview from a doorstep in Guntur West to a number on a dashboard, and the speech engine behind it.', 'See how it works'],
-    ['demo.html', 'Live demo', 'play', 'The living map, the AI analyst, and three live demos of the product that open full screen in the page.', 'Open the live demo'],
-    ['trust.html', 'Trust', 'shield', 'Why it is worth backing: who pays, what each interview earns and costs, the build, the proof and the risks.', 'See why it can be trusted'],
-    ['plan.html', 'Pricing', 'coins', 'How a client pays, what repeats every year, what it costs to run, the twelve-week build and the market state by state.', 'See the pricing'],
-    ['design-system.html', 'Design system', 'pen', 'The colours, type, components and motion rules every screen on this site is built from.', 'Open the design system'],
+    ['/', 'Home', 'home', 'The whole case in short: four cards, the product working, the cost advantage and how the business grows.', 'Back to the home page'],
+    ['/product', 'Product', 'layers', 'What we sell: three apps and an AI analyst, the five people who use them, the paid rounds of an election, and the competition.', 'See the product'],
+    ['/how', 'How it works', 'route', 'One interview from a doorstep in Guntur West to a number on a dashboard, and the speech engine behind it.', 'See how it works'],
+    ['/demo', 'Live demo', 'play', 'The living map, the AI analyst, and three live demos of the product that open full screen in the page.', 'Open the live demo'],
+    ['/trust', 'Trust', 'shield', 'Why it is worth backing: who pays, what each interview earns and costs, the build, the proof and the risks.', 'See why it can be trusted'],
+    ['/plan', 'Pricing', 'coins', 'How a client pays, what repeats every year, what it costs to run, the twelve-week build and the market state by state.', 'See the pricing'],
+    ['/design-system', 'Design system', 'pen', 'The colours, type, components and motion rules every screen on this site is built from.', 'Open the design system'],
   ];
 
   const file = (() => {
-    const p = location.pathname.replace(/\/+$/, '');
+    /* clean addresses: "/", "/product"… (also accepts an old "/product.html" or "/index.html") */
+    const p = location.pathname.replace(/\.html$/, '').replace(/\/+$/, '');
     const n = p.slice(p.lastIndexOf('/') + 1);
-    return n === '' ? 'index.html' : n;
+    return n === '' || n === 'index' ? '/' : '/' + n;
   })();
   const here = PAGES.findIndex((p) => p[0] === file);
   const ic = (n) => `<svg aria-hidden="true"><use href="#i-${n}"/></svg>`;
