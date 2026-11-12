@@ -558,6 +558,63 @@ b.neg { color: var(--ink-3); }
   .sc-n { font-size: 24px; }
 }
 
+/* ---------------------------------------------------------------- where the money comes from */
+.wb-key { display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 15px; color: var(--ink-3); }
+.wb-key i { display: inline-block; width: 13px; height: 13px; border-radius: 4px; margin-right: 8px; vertical-align: -1px; }
+.wb-key b { color: var(--ink-2); font-family: var(--f-text); font-weight: 600; }
+.k-setup, .wb-bar .s-setup { background: rgba(255, 255, 255, .17); }
+.k-fees, .wb-bar .s-fees { background: var(--acc); }
+.k-ret, .wb-bar .s-ret { background: rgba(254, 136, 27, .34); }
+.k-lic, .wb-bar .s-lic { background: repeating-linear-gradient(135deg, rgba(255,255,255,.14) 0 5px, transparent 5px 10px); border: 1px dashed var(--line-2); }
+.wb { display: grid; }
+.wb-h, .wb-r { display: grid; grid-template-columns: minmax(160px, 1.15fr) minmax(0, 1.9fr) minmax(104px, auto) minmax(104px, auto); gap: 8px 20px; align-items: center; }
+.wb-h { padding-bottom: 10px; font-size: 13.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); border-bottom: 1px solid var(--line-2); }
+.wb-h span:nth-child(3), .wb-h span:nth-child(4) { text-align: right; }
+.wb-r { padding: clamp(9px, 1.3vh, 14px) 0; border-bottom: 1px solid var(--line); }
+.wb-r:last-child { border-bottom: 0; }
+.wb-r.tot { border-top: 1px solid var(--line-2); border-bottom: 0; }
+.wb-n { font-size: 17px; line-height: 1.3; }
+.wb-n small { display: block; margin-top: 3px; font-size: 14.5px; color: var(--ink-3); }
+.wb-note { font-size: 14.5px; color: var(--ink-3); }
+.wb-track { background: var(--card-2); border-radius: 10px; }
+.wb-bar { display: flex; height: 44px; width: 100%; border-radius: 10px; overflow: hidden; background: var(--card-2); }
+.wb-bar i { flex-basis: 0; min-width: 0; display: flex; align-items: center; padding: 0 9px; overflow: hidden; font-style: normal; font-family: var(--f-display); font-weight: 700; font-size: 14.5px; white-space: nowrap; color: var(--ink); }
+.wb-bar .s-fees { color: #190c02; }
+.wb-bar .s-setup, .wb-bar .s-ret { color: var(--ink-2); }
+.wb-v { text-align: right; font-family: var(--f-display); font-weight: 700; font-size: clamp(19px, 1.5vw, 25px); white-space: nowrap; }
+.wb-v.rec { color: var(--ink-3); }
+.sum-row.hl3 b { color: var(--acc); font-size: clamp(24px, 2vw, 32px); }
+#s-scope .card h3 { min-height: 2.4em; }
+.sum-row small { display: block; margin-top: 2px; font-size: 15px; color: var(--ink-3); }
+.trio.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+/* ---------------------------------------------------------------- how we get there */
+.gt { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 24px); }
+.gt::before { content: ""; position: absolute; left: 8px; right: 8px; top: 11px; height: 2px; background: linear-gradient(90deg, var(--line-2), rgba(254, 136, 27, .5) 70%, var(--acc)); }
+.gt li { position: relative; padding-top: 38px; }
+.gt li::before { content: ""; position: absolute; top: 3px; left: 0; width: 17px; height: 17px; border-radius: 50%; background: var(--bg); border: 2px solid var(--line-2); }
+.gt li.on::before { border-color: var(--acc); background: var(--acc); }
+.gt b { display: block; font-family: var(--f-display); font-weight: 700; font-size: clamp(21px, 1.8vw, 28px); letter-spacing: -.02em; }
+.gt .gt-k { display: block; margin: 3px 0 9px; font-size: 13.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--acc); }
+.gt p { font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+.gt em { display: block; margin-top: 11px; font-style: normal; font-family: var(--f-display); font-weight: 700; font-size: clamp(18px, 1.4vw, 23px); }
+.gt li.on em { color: var(--acc); }
+
+@media (max-width: 1000px) {
+  .gt { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 22px; }
+  .gt::before { display: none; }
+}
+@media (max-width: 760px) {
+  .wb-h { display: none; }
+  .wb-r { grid-template-columns: minmax(0, 1fr) auto; gap: 10px 14px; }
+  .wb-bar { grid-column: 1 / -1; order: 3; height: 36px; }
+  .wb-v { font-size: 20px; }
+  .wb-v.rec { grid-column: 2; }
+  .wb-note { display: none; }
+  .gt { grid-template-columns: minmax(0, 1fr); }
+  .trio.two { grid-template-columns: minmax(0, 1fr); }
+}
+
 @media print {
   @page { size: A4 landscape; margin: 12mm 14mm; }
   :root { --bg: #fff; --card: #f6f5f3; --card-2: #eeece8; --line: #e3e0da; --line-2: #cfcac2; --ink: #111; --ink-2: #333; --ink-3: #666; --acc: #c2560a; --acc-soft: #fbeadb; }
