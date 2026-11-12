@@ -511,6 +511,53 @@ b.neg { color: var(--ink-3); }
 }
 
 /* ---------------------------------------------------------------- print / save as PDF */
+/* ---------------------------------------------------------------- client worth · two-year plan · scope */
+.pl-row > span small { display: block; font-size: 15px; color: var(--ink-3); margin-top: 2px; }
+.cnt { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px 10px; align-items: center; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-sm); }
+.cnt > span:not(.fld-v):not(.cnt-h) { font-size: 16px; color: var(--ink-2); }
+.cnt-h { font-size: 13.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); text-align: center; }
+.cnt .fld-v { height: 40px; padding: 0 10px; justify-content: center; border: 1px solid transparent; }
+.cnt .fld-v:focus-within { border-color: rgba(254, 136, 27, .65); }
+.cnt input { width: 2.8ch; text-align: center; font-size: 19px; }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.trio .fld { flex-direction: column; align-items: stretch; gap: 7px; padding: 11px 12px; }
+.trio .fld > span:first-child { font-size: 13.5px; line-height: 1.25; }
+.trio .fld-v { height: 40px; justify-content: center; padding: 0 8px; }
+.trio .fld input { width: 8ch; font-size: 19px; }
+.fld.wide-in input { width: 9.6ch; }
+#s-bizrisk .risks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sc-n { font-family: var(--f-display); font-weight: 700; font-size: clamp(23px, 1.9vw, 32px); letter-spacing: -.025em; line-height: 1.05; color: var(--ink); }
+.card.accent .sc-n { color: var(--acc); }
+
+/* ---------------------------------------------------------------- all the numbers */
+#s-numbers { overflow: visible; }
+.nums { columns: 4; column-gap: 26px; }
+.nums .asm-g { margin-bottom: 18px; gap: 8px; break-inside: avoid; }
+.nums .fld { padding: 6px 6px 6px 14px; }
+.nums .fld > span:first-child { font-size: 15px; }
+.nums .fld > span:first-child small { font-size: 13.5px; }
+.nums .fld-v { height: 38px; padding: 0 10px; }
+.nums .fld input { width: 9.2ch; font-size: 18px; }
+.nums .chips button { height: 34px; padding: 0 12px; font-size: 14px; }
+
+@media (max-width: 1340px) {
+  .nums { columns: 3; }
+}
+@media (max-width: 1000px) {
+  .nums { columns: 2; }
+  .trio { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .nums { columns: 1; }
+  .cnt { padding: 12px; gap: 8px; }
+  .trio { grid-template-columns: minmax(0, 1fr); }
+  .trio .fld { flex-direction: row; align-items: center; }
+  .trio .fld > span:first-child { font-size: 16px; }
+  .cnt > span:not(.fld-v):not(.cnt-h) { font-size: 15.5px; }
+  .cnt input { font-size: 17px; }
+  .sc-n { font-size: 24px; }
+}
+
 @media print {
   @page { size: A4 landscape; margin: 12mm 14mm; }
   :root { --bg: #fff; --card: #f6f5f3; --card-2: #eeece8; --line: #e3e0da; --line-2: #cfcac2; --ink: #111; --ink-2: #333; --ink-3: #666; --acc: #c2560a; --acc-soft: #fbeadb; }
